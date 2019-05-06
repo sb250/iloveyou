@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>哈哈哈哈哈哈哈哈哈</title>
+  <style>
+    body, html {
+      font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .container {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .item {
+      display: inline-block;
+      padding: 12px;
+      border-radius: 2px;
+      position: absolute;
+      line-height: 1;
+    }
+
+    #stop {
+      position: absolute;
+      left: 50%;
+      bottom: 10%;
+    }
+
+    .stop-inner {
+      display: inline-block;
+      position: relative;
+      left: -50%;
+      background: #494747;
+      color: #fff;
+      padding: 5.6px 11.98px;
+      border-radius: 5px;
+      z-index: 1;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .stop-inner:hover {
+      border: dotted red 10px;
+    }
+  </style>
+  <body>
+    <div id="app" class="container">
+      <div id="stop">
+        <div class="stop-inner">
+          够了(｡・`ω´・) 停！
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.4/randomColor.js"></script>
+  <script>
+    var app = $('#app');
+    var stop = $('#stop');
+  
+    function play () {
+      var rh = Math.floor(Math.random() * 98);
+      var rw = Math.floor(Math.random() * 98);
+  
+      var color = randomColor({
+        luminosity: 'dark',
+      });
+  
+      var bgcolor = randomColor({
+        luminosity: 'bright',
+        format: 'rgba',
+        alpha: 0.4,
+      });
+  
+      var position = 'top: ' + rh + '%; left: ' + rw + '%;';
+      var colorStyle = 'background-color: ' + bgcolor + '; color: ' + color + ';'
+  
+      var item = $("<div/>", {
+        class: 'item',
+        title: 'test',
+        style: colorStyle + position,
+      })
+  
+      item.html("爸爸爱你")
+  
+      item.appendTo(app)
+    }
+
+    var light = true;
+    var intervalId = setInterval(play, 100);
+
+    stop.on('click', function () {
+      if (!light) {
+        intervalId = setInterval(play, 100);
+        $(this).find('.stop-inner').html("够了(｡・`ω´・) 停！")
+      } else {
+        clearInterval(intervalId)
+        $(this).find('.stop-inner').html("╰(*°▽°*)╯ 继续..")
+      }
+      light = !light
+    })
+
+  </script>
+</html>
