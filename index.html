@@ -92,12 +92,12 @@
         unit = 'px'
       }
 
-      if (top > 40) {
-        top = top - 40
+      if (top > itemHeight) {
+        top = top - itemHeight
       }
 
-      if (left > 88) {
-        left = left - 88
+      if (left > itemWidth) {
+        left = left - itemWidth
       }
   
       var color = randomColor({
@@ -125,7 +125,6 @@
 
       itemWidth = item.innerWidth()
       itemHeight = item.innerHeight()
-      // app.css('background-color', bgcolor);
     }
 
     var light = true;
