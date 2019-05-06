@@ -6,6 +6,10 @@
   <title>哈哈哈哈哈哈哈哈哈</title>
   <style>
     body, html {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
       font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
@@ -67,10 +71,34 @@
   <script>
     var app = $('#app');
     var stop = $('#stop');
+
+    var appH = app.innerHeight()
+    var appW = app.innerWidth()
+
+    var itemWidth = 0;
+    var itemHeight = 0;
+
+    var unit = 'px'
   
     function play () {
-      var rh = Math.floor(Math.random() * 98);
-      var rw = Math.floor(Math.random() * 98);
+      var top = Math.floor(Math.random() * appH);
+      var left = Math.floor(Math.random() * appW);
+
+      if (itemWidth === 0 && itemHeight === 0) {
+        top = 50
+        left = 50
+        unit = '%'
+      } else {
+        unit = 'px'
+      }
+
+      if (top > 40) {
+        top = top - 40
+      }
+
+      if (left > 88) {
+        left = left - 88
+      }
   
       var color = randomColor({
         luminosity: 'dark',
@@ -82,18 +110,22 @@
         alpha: 0.4,
       });
   
-      var position = 'top: ' + rh + '%; left: ' + rw + '%;';
+      var positionTop = 'top: ' + top + unit + ';';
+      var postionLeft = 'left: ' + left + unit + ';';
       var colorStyle = 'background-color: ' + bgcolor + '; color: ' + color + ';'
   
       var item = $("<div/>", {
         class: 'item',
         title: 'test',
-        style: colorStyle + position,
+        style: colorStyle + positionTop + postionLeft,
       })
   
       item.html("爸爸爱你")
-  
       item.appendTo(app)
+
+      itemWidth = item.innerWidth()
+      itemHeight = item.innerHeight()
+      // app.css('background-color', bgcolor);
     }
 
     var light = true;
