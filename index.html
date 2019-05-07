@@ -139,11 +139,11 @@
     }
 
     var light = true;
-    var intervalId = setInterval(play, 100);
+    var intervalId = setInterval(play, 500);
 
     stop.on('click', function () {
       if (!light) {
-        intervalId = setInterval(play, 100);
+        intervalId = setInterval(play, 500);
         $(this).find('.stop-inner').html("够了(｡・`ω´・) 停！")
       } else {
         clearInterval(intervalId)
